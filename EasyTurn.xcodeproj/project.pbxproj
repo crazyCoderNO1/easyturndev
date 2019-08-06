@@ -1137,13 +1137,13 @@
 		0046AA3D22EACDE20038CA11 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0046AA3E22EACDE20038CA11 /* UserServeView.m */,
-				0046AA3F22EACDE20038CA11 /* UserSaleViewCell.m */,
-				0046AA4022EACDE20038CA11 /* UserSaleView.m */,
-				0046AA4122EACDE20038CA11 /* UserServeView.h */,
 				0046AA4222EACDE20038CA11 /* UserSaleView.h */,
+				0046AA4022EACDE20038CA11 /* UserSaleView.m */,
 				0046AA4322EACDE20038CA11 /* UserSaleViewCell.h */,
+				0046AA3F22EACDE20038CA11 /* UserSaleViewCell.m */,
 				0046AA4422EACDE20038CA11 /* UserSaleViewCell.xib */,
+				0046AA4122EACDE20038CA11 /* UserServeView.h */,
+				0046AA3E22EACDE20038CA11 /* UserServeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2774,7 +2774,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q4TQ6P277V;
+				DEVELOPMENT_TEAM = P79622B5H8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyTurn/Vendors(第三方)/aliPayTools",
@@ -2829,7 +2829,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q4TQ6P277V;
+				DEVELOPMENT_TEAM = P79622B5H8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyTurn/Vendors(第三方)/aliPayTools",

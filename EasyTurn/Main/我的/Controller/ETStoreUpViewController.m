@@ -7,11 +7,12 @@
 //
 
 #import "ETStoreUpViewController.h"
-
+#import "ETEnterpriseServiceTableViewCell1.h"
+#import "ETProductModel.h"
 @interface ETStoreUpViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tab;
 @property(nonatomic,strong)UIButton *loadingBtn;
-
+@property(nonatomic,strong)NSMutableArray*products;
 @end
 
 @implementation ETStoreUpViewController
@@ -23,6 +24,8 @@
     self.view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:self.tab];
     [self.view addSubview:self.loadingBtn];
+    [self.tab registerClass:[ETEnterpriseServiceTableViewCell1 class] forCellReuseIdentifier:@"cell"];
+     [self PostUI:@"1"];
 }
 
 
@@ -49,15 +52,61 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return _products.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell)
-    {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+    ETEnterpriseServiceTableViewCell1*cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if (_products.count>0) {
+        ETProductModel* p=[_products objectAtIndex:indexPath.row];
+        cell.serviceLab.text=p.desc;
+        cell.giveserviceLab.text=p.title;
+        if ([p.releaseId isEqualToString:@"1001"]) {
+            cell.serviceLab.text=@"出售";
+        }else if ([p.releaseId isEqualToString:@"1002"]) {
+            cell.serviceLab.text=@"求购";
+        }else if ([p.releaseId isEqualToString:@"1003"]) {
+            cell.serviceLab.text=@"服务";
+        }
+        cell.moneyLab.text=[NSString stringWithFormat:@"¥%@",p.price];
+        
+        cell.addressLab.text=p.cityName;
+        cell.detailsLab.text=p.business;
+        [cell.comImg sd_setImageWithURL:[NSURL URLWithString:p.imageList]];
+        if ([p.releaseTypeId isEqualToString:@"1"]) {
+            UIImageView* jiao=[UIImageView new];
+            [jiao setImage:[UIImage imageNamed:@"首页_出售"]];
+            [cell.comImg addSubview:jiao];
+            [jiao mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(0);
+                make.top.mas_equalTo(0);
+                make.width.mas_equalTo(35);
+                make.height.mas_equalTo(35);
+            }];
+        }
+        if ([p.releaseTypeId isEqualToString:@"3"]) {
+            UIImageView* jiao=[UIImageView new];
+            [jiao setImage:[UIImage imageNamed:@"首页_企服者"]];
+            [cell.comImg addSubview:jiao];
+            [jiao mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(0);
+                make.top.mas_equalTo(0);
+                make.width.mas_equalTo(35);
+                make.height.mas_equalTo(35);
+            }];
+        }
+        if ([p.releaseTypeId isEqualToString:@"2"]) {
+            UIImageView* jiao=[UIImageView new];
+            [jiao setImage:[UIImage imageNamed:@"首页_求购"]];
+            [cell.comImg addSubview:jiao];
+            [jiao mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(0);
+                make.top.mas_equalTo(0);
+                make.width.mas_equalTo(35);
+                make.height.mas_equalTo(35);
+            }];
+        }
     }
     return cell;
 }
@@ -69,5 +118,27 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     // 3点击没有颜色改变
     cell.selected = NO;
+}
+
+- (void)PostUI:(NSString*)head {
+    NSDictionary *params = @{
+                             };
+    NSData *data =    [NSJSONSerialization dataWithJSONObject:params options:NSUTF8StringEncoding error:nil];
+    
+    [HttpTool get:[NSString stringWithFormat:@"collect/my"] params:params success:^(NSDictionary *response) {
+        //        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
+        //        NSLog(@"%@",jsonDict);
+        _products=[NSMutableArray new];
+        NSDictionary* a=response[@"data"];
+        for (NSDictionary* prod in response[@"data"]) {
+            ETProductModel* p=[ETProductModel mj_objectWithKeyValues:prod];
+            if (p) {
+                [_products addObject:p];
+            }
+        }
+        [_tab reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end
