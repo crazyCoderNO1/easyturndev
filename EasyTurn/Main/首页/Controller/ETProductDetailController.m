@@ -169,7 +169,7 @@ static NSString* const kShareFailedText = @"分享失败";
     UIButton* fav=[UIButton new];
     [fav setBackgroundImage:[UIImage imageNamed:@"详情_分组13"] forState:UIControlStateNormal];
     [_cycleScrollView addSubview:fav];
-    [fav addTarget:self action:@selector(fav) forControlEvents:UIControlEventTouchUpInside];
+    [fav addTarget:self action:@selector(fav:) forControlEvents:UIControlEventTouchUpInside];
     [fav mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(12+22);
         make.right.mas_equalTo(-12-25-9);
@@ -575,7 +575,7 @@ static NSString* const kShareFailedText = @"分享失败";
     NSData *data =    [NSJSONSerialization dataWithJSONObject:params options:NSUTF8StringEncoding error:nil];
     
     [HttpTool put:[NSString stringWithFormat:@"collect/myAdd"] params:params success:^(NSDictionary *response) {
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
+//        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"");
     } failure:^(NSError *error) {
         NSLog(@"");
@@ -595,7 +595,7 @@ static NSString* const kShareFailedText = @"分享失败";
     NSData *data =    [NSJSONSerialization dataWithJSONObject:params options:NSUTF8StringEncoding error:nil];
     
     [HttpTool put:[NSString stringWithFormat:@"collect/myDel"] params:params success:^(NSDictionary *response) {
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
+//        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"");
     } failure:^(NSError *error) {
         NSLog(@"");
