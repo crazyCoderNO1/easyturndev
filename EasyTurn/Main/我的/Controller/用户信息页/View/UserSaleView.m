@@ -15,13 +15,13 @@
     if (self) {
         self.array = [NSMutableArray array];
         self.dataArray = [NSMutableArray array];
-//        @property (strong, nonatomic)  NSString *imgVStr;
-//        @property (strong, nonatomic)  NSString *titleLStr;
-//        @property (strong, nonatomic)  NSString *fuLStr;
-//        @property (strong, nonatomic)  NSString *loacLStr;
-//        @property (strong, nonatomic)  NSString *moneyLStr;
-//        @property (strong, nonatomic)  NSString *delBtStr;
-//        @property (strong, nonatomic)  NSString *neBtnStr;
+        //        @property (strong, nonatomic)  NSString *imgVStr;
+        //        @property (strong, nonatomic)  NSString *titleLStr;
+        //        @property (strong, nonatomic)  NSString *fuLStr;
+        //        @property (strong, nonatomic)  NSString *loacLStr;
+        //        @property (strong, nonatomic)  NSString *moneyLStr;
+        //        @property (strong, nonatomic)  NSString *delBtStr;
+        //        @property (strong, nonatomic)  NSString *neBtnStr;
         NSDictionary *dic = @{@"imgVStr":@"aaa",@"titleLStr":@"北京有限公司",@"fuLStr":@"出售",@"loacLStr":@"朝阳",@"moneyLStr":@"1000～3000"};
         self.array = [NSMutableArray arrayWithObjects: dic,dic,dic,dic,dic, nil];
         for (int i = 0; i < _array.count; i++) {
@@ -30,7 +30,7 @@
             [model setValuesForKeysWithDictionary:dict];
             [self.dataArray addObject:model];
         }
-
+        
         
         [self addSubview:self.tableView];
     }
@@ -38,8 +38,8 @@
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-
-
+    
+    
 }
 -(UITableView *)tableView{
     if (!_tableView) {
@@ -48,7 +48,7 @@
         _tableView.dataSource = self;
         _tableView.rowHeight=158;
         [_tableView registerNib:[UINib nibWithNibName:@"UserSaleViewCell" bundle:nil] forCellReuseIdentifier:@"cellID"];
-
+        
     }
     return _tableView;
 }
@@ -64,6 +64,7 @@
     [cell.delBt addTarget:self action:@selector(onTouchBtnInCell:) forControlEvents:(UIControlEventTouchUpInside)];
     [cell.neBtn addTarget:self action:@selector(onTouchBtnIn:) forControlEvents:UIControlEventTouchUpInside];
     [cell setSaleModel:model];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 //删除按钮
