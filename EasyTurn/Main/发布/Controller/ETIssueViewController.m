@@ -1015,7 +1015,7 @@
         _publishBtn.layer.cornerRadius = 6;
         _publishBtn.backgroundColor=[UIColor colorWithRed:20/255.0 green:138/255.0 blue:236/255.0 alpha:1.0];
         [_publishBtn setTitle:@"确认发布" forState:UIControlStateNormal];
-
+        [_publishBtn addTarget:self action:@selector(publish) forControlEvents:UIControlEventTouchUpInside];
     }
     return _publishBtn;
 }
@@ -1050,6 +1050,51 @@
         self.effectiveTimeLabel.text = name;
     }
     
+}
+-(void)publish
+{
+    [self PostUI];
+}
+#pragma mark - 发布
+- (void)PostUI {
+    NSMutableDictionary* dic=[NSMutableDictionary new];
+    NSDictionary *params = @{
+                             @"accuratePush" : @"1",
+                             @"asset": @"10",
+                             @"browse" : @(0),
+                             @"business" : @"1",
+                             @"buyUserId" : @(0),
+                             @"cityId" : @(0),
+                             @"cityName" : @"1",
+                             @"detail" : @"1",
+                             @"freePush" : @(0),
+                             @"higherPrice" : @(0),
+                             @"imageList" : @"1",
+                             @"information" : @"1",
+                             @"isDel" : @(0),
+                             @"linkmanId" : @(0),
+                             @"linkmanMobil" : @"1",
+                             @"linkmanName" : @"1",
+                             @"lowerPrice" : @(0),
+                             @"price" : @(0),
+                             @"releaseId" : @(0),
+                             @"releaseTime" : @"2019-08-05T07:47:43.640Z",
+                             @"releaseTypeId" : @(0),
+                             @"selectId" : @(0),
+                             @"serviceId" : @(0),
+                             @"taxId" : @(0),
+                             @"title" : @"出售丰台公司",
+                             @"tradStatus" : @(0),
+                             @"userId" : @(0),
+                             @"validId" : @(0)
+                             };
+    
+    [HttpTool post:[NSString stringWithFormat:@"release/releaseService"] params:params success:^(id responseObj) {
+        NSDictionary* a=responseObj[@"data"];
+                NSLog(@"");
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 @end

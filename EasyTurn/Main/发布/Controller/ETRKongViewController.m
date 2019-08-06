@@ -202,7 +202,7 @@
     for (int i = 0; i < self.ary.count; i++) {
         
         
-        NSArray *arrTitle = @[@"发布出售",@"发布求购",@"征服者"];
+        NSArray *arrTitle = @[@"发布出售",@"发布求购",@"企服者"];
         
         
         PublishMenuButton *btn = [PublishMenuButton buttonWithType:UIButtonTypeCustom];
