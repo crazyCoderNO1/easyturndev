@@ -151,6 +151,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             UILabel *label = [[UILabel alloc] init];

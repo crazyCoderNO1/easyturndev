@@ -399,8 +399,10 @@ static NSString* const kShareFailedText = @"分享失败";
     cell.textLabel.textColor = kACColorBlack;
     cell.textLabel.text = [_detailTitles objectAtIndex:indexPath.row+indexPath.section];
     if (indexPath.section==0) {
+        
         ProductInfoCell *cell=[_tableView dequeueReusableCellWithIdentifier:@"productinfocell"];
         cell.titleLabel.text=@"代理公司记账";
+         cell.selectionStyle = UITableViewCellSelectionStyleNone;  
         cell.titleLabel.numberOfLines=0;
         //
         ETProductModel* p=[_products objectAtIndex:0];

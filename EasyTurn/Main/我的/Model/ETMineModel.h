@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ETMineModel : NSObject
-
+@property(nonatomic,strong)NSString *title;
+@property(nonatomic,strong)NSString *condition;
+@property(nonatomic,strong)NSString *money;
 @end
 
 NS_ASSUME_NONNULL_END

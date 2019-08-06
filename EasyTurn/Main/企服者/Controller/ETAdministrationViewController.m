@@ -79,6 +79,7 @@
     cell.moneyLab.text=p.price;
     cell.addressLab.text=p.cityName;
     cell.detailsLab.text=p.detail;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

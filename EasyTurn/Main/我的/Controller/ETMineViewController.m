@@ -156,6 +156,7 @@ static NSString *const cellIdentifier =@"cellIdentifier";
 //    ETMETableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
     ETEnterpriseServiceTableViewCell1 *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     ETProductModel* p=[_products objectAtIndex:indexPath.row];
     cell.giveserviceLab.text=p.title;
     [cell.comImg sd_setImageWithURL:[NSURL URLWithString:p.imageList] placeholderImage:nil];

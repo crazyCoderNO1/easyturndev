@@ -18,7 +18,7 @@
         [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(19);
             make.left.mas_equalTo(15);
-            make.size.mas_equalTo(CGSizeMake(57, 22));
+            make.size.mas_equalTo(CGSizeMake(70, 22));
         }];
         
         [self addSubview:self.subTitleLab];

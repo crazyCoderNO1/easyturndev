@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden=NO;
+    
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"账单记录" style:UIBarButtonItemStylePlain target:self action:@selector(tiaoZhang)];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
@@ -87,7 +88,7 @@
     if (!cell)
     {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-    }
+    }    
     cell.imageView.image=[UIImage imageNamed:@""];
     cell.textLabel.text=@"账户余额";
     cell.detailTextLabel.text=@"$360";
@@ -95,12 +96,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_tab deselectRowAtIndexPath:indexPath animated:YES];
-    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // 2
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     // 3点击没有颜色改变
     cell.selected = NO;
 }
-
 @end

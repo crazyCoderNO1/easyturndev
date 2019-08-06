@@ -78,6 +78,7 @@
     cell.moneyLab.text=p.price;
     cell.addressLab.text=p.cityName;
     cell.detailsLab.text=p.detail;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([p.releaseTypeId isEqualToString:@"1"]) {
         UIImageView* jiao=[UIImageView new];
         [jiao setImage:[UIImage imageNamed:@"首页_出售"]];
